@@ -1,16 +1,11 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import MovieItem from '../MovieItem/MovieItem';
 
 class MovieList extends Component {
   render() {
     const moviesListArray = this.props.store.movies.map((item, index) => {
-      return (
-        <div>
-          <img src={item.poster} />
-          <h2>{item.title}</h2>
-          <p>{item.description}</p>
-        </div>
-      );
+      return <MovieItem item={item} />;
     });
 
     return <div>{moviesListArray}</div>;
