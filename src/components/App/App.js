@@ -2,8 +2,14 @@ import React, { Component } from 'react';
 import './App.css';
 import { HashRouter as Router, Route } from 'react-router-dom';
 import MovieList from '../MovieList/MovieList';
+import { connect } from 'react-redux';
 
 class App extends Component {
+  componentDidMount() {
+    this.props.dispatch({
+      type: 'GET_MOVIES',
+    });
+  }
   // Renders the entire app on the DOM
   render() {
     return (
@@ -17,4 +23,4 @@ class App extends Component {
   }
 }
 
-export default App;
+export default connect()(App);

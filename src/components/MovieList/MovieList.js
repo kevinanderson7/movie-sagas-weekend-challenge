@@ -2,14 +2,18 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
 class MovieList extends Component {
-  componentDidMount() {
-    this.props.dispatch({
-      type: 'GET_MOVIES',
-    });
-  }
-
   render() {
-    return <div>{this.props.store.movies.title}</div>;
+    const moviesListArray = this.props.store.movies.map((item, index) => {
+      return (
+        <div>
+          <img src={item.poster} />
+          <h2>{item.title}</h2>
+          <p>{item.description}</p>
+        </div>
+      );
+    });
+
+    return <div>{moviesListArray}</div>;
   }
 }
 
