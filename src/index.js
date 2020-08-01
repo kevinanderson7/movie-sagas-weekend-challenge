@@ -58,11 +58,22 @@ const genres = (state = [], action) => {
   }
 };
 
+const movieClickedReducer = (state = [], action) => {
+  switch (action.type) {
+    case 'UPDATE_MOVIE_CLICKED':
+      return action.payload;
+
+    default:
+      return state;
+  }
+};
+
 // Create one store that all components can use
 const storeInstance = createStore(
   combineReducers({
     movies,
     genres,
+    movieClickedReducer,
   }),
   // Add sagaMiddleware to our store
   applyMiddleware(sagaMiddleware, logger)
