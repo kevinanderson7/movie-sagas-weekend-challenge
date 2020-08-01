@@ -1,11 +1,20 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { Link, withRouter } from 'react-router-dom';
 
 class MovieItem extends Component {
+  handleImageClick = (action) => {
+    this.props.history.push('/details');
+  };
+
   render() {
     return (
       <div key={this.props.item.id}>
-        <img alt={this.props.item.title} src={this.props.item.poster} />
+        <img
+          onClick={this.handleImageClick}
+          alt={this.props.item.title}
+          src={this.props.item.poster}
+        />
         <h2>{this.props.item.title}</h2>
         <p>{this.props.item.description}</p>
       </div>
@@ -15,4 +24,4 @@ class MovieItem extends Component {
 
 const mapStoreToProps = (store) => ({ store });
 
-export default connect(mapStoreToProps)(MovieItem);
+export default withRouter(connect(mapStoreToProps)(MovieItem));

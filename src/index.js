@@ -19,9 +19,14 @@ function* rootSaga() {
 
 function* getMovies() {
   try {
-    const response = yield axios.get('/api/movies');
+    const response = yield axios.get('/api/movies/genres');
+    console.log(response.data);
     yield put({
       type: 'SET_MOVIES',
+      payload: response.data,
+    });
+    yield put({
+      type: 'SET_GENRES',
       payload: response.data,
     });
   } catch (error) {
@@ -47,6 +52,7 @@ const genres = (state = [], action) => {
   switch (action.type) {
     case 'SET_GENRES':
       return action.payload;
+
     default:
       return state;
   }
