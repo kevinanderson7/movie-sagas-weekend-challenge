@@ -4,6 +4,7 @@ import { HashRouter as Router, Route } from 'react-router-dom';
 import MovieList from '../MovieList/MovieList';
 import { connect } from 'react-redux';
 import MovieDetails from '../MovieDetails/MovieDetails';
+import EditPage from '../EditPage/EditPage';
 
 class App extends Component {
   componentDidMount() {
@@ -16,10 +17,11 @@ class App extends Component {
     return (
       <Router>
         <div className="App">
-          <h2>Movie Saga App</h2>
+          <h1>Movie Saga App</h1>
           <Route exact path="/" component={MovieList} />
         </div>
-        <Route path="/details/:id" component={MovieDetails} />
+        <Route exact path="/details/:id" component={MovieDetails} />
+        <Route exact path="/details/:id/edit" component={EditPage} />
       </Router>
     );
   }
