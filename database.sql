@@ -55,3 +55,14 @@ VALUES
 ('Science Fiction'),
 ('Space-Opera'),
 ('Superhero');
+
+CREATE TABLE movies_genres (
+	"id" serial primary key,
+	"movies_id" INT REFERENCES "movies",
+	"genres_id" INT REFERENCES "genres"
+	);
+	
+SELECT movies.id, movies.title, movies.description, movies.poster, array_agg(genres.name) as genre FROM movies
+JOIN movies_genres ON movies.id=movies_genres.movies_id
+JOIN genres ON movies_genres.genres_id=genres.id
+GROUP by movies.id ORDER BY movies.id;
