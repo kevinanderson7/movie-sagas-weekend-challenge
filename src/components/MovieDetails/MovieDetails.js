@@ -14,6 +14,11 @@ class MovieDetails extends Component {
   //       type: 'GET_MOVIES',
   //     });
   //   }
+
+  handleBackClick = () => {
+    this.props.history.push('/');
+  };
+
   handleEditClick = () => {
     this.props.history.push(
       `/details/${this.props.store.movieClickedReducer.id}/edit`
@@ -32,7 +37,10 @@ class MovieDetails extends Component {
     return (
       <div>
         <div className="back-button">
-          <Link to={'/'}>Back to List</Link>
+          <Button variant="contained" onClick={this.handleBackClick}>
+            Back to List
+          </Button>
+          {/* <Link to={'/'}>Back to List</Link> */}
         </div>
         <div className="edit-button">
           <Button variant="contained" onClick={this.handleEditClick}>

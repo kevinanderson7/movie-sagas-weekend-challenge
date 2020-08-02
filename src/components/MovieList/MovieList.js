@@ -9,8 +9,10 @@ class MovieList extends Component {
     const moviesListArray = this.props.store.movies.map((item, index) => {
       return (
         <div key={item.id} className="movie-container2">
-          <Grid key={item.id} xs={12} item>
-            <MovieItem key={item.id} item={item} />{' '}
+          <Grid container>
+            <Grid key={item.id} xs={12} item>
+              <MovieItem key={item.id} item={item} />{' '}
+            </Grid>
           </Grid>
         </div>
       );

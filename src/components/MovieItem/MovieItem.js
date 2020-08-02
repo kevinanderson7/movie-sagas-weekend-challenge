@@ -8,6 +8,7 @@ import CardContent from '@material-ui/core/CardContent';
 
 import Typography from '@material-ui/core/Typography';
 import './MovieItem.css';
+import Grid from '@material-ui/core/Grid';
 
 class MovieItem extends Component {
   handleImageClick = (movieId) => (event) => {
@@ -26,27 +27,36 @@ class MovieItem extends Component {
   render() {
     return (
       <div>
-        <img
-          onClick={this.handleImageClick(this.props.item.id)}
-          src={this.props.item.poster}
-          alt={this.props.item.title}
-        ></img>
+        <Grid container justify="center">
+          <Grid item xs={12}>
+            <img
+              onClick={this.handleImageClick(this.props.item.id)}
+              src={this.props.item.poster}
+              alt={this.props.item.title}
+            ></img>
 
-        <Card
-          onClick={this.handleImageClick(this.props.item.id)}
-          key={this.props.item.id}
-        >
-          <CardActionArea>
-            <CardContent>
-              <Typography gutterBottom variant="h5" component="h2">
-                {this.props.item.title}
-              </Typography>
-              <Typography variant="body2" color="textSecondary" component="p">
-                {this.props.item.description}
-              </Typography>
-            </CardContent>
-          </CardActionArea>
-        </Card>
+            <Card
+              elevation={4}
+              onClick={this.handleImageClick(this.props.item.id)}
+              key={this.props.item.id}
+            >
+              <CardActionArea>
+                <CardContent>
+                  <Typography gutterBottom variant="h5" component="h2">
+                    {this.props.item.title}
+                  </Typography>
+                  <Typography
+                    variant="body2"
+                    color="textSecondary"
+                    component="p"
+                  >
+                    {this.props.item.description}
+                  </Typography>
+                </CardContent>
+              </CardActionArea>
+            </Card>
+          </Grid>
+        </Grid>
       </div>
     );
   }

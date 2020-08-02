@@ -1,8 +1,18 @@
-.back-button {
+.cancel-button {
   margin: 15px;
 }
-.edit-button {
+
+.save-button {
   margin: 15px;
+}
+
+.title-input {
+  margin: 15px;
+  display: inline-block;
+}
+.description-input {
+  margin: 15px;
+  display: inline-block;
 }
 
 .movie-container {

@@ -1,7 +1,12 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+
 import { connect } from 'react-redux';
 import TextField from '@material-ui/core/TextField';
+import Card from '@material-ui/core/Card';
+import CardContent from '@material-ui/core/CardContent';
+import Typography from '@material-ui/core/Typography';
+import './EditPage.css';
+import Button from '@material-ui/core/Button';
 
 class EditPage extends Component {
   state = {
@@ -54,30 +59,47 @@ class EditPage extends Component {
     return (
       <div>
         <div>
-          <Link to={'/'}>Back to List</Link>
-        </div>
-        <div>
-          <button onClick={this.handleCancelClick}>Cancel</button>
-          <button onClick={this.handleSaveClick}>Save</button>
-          <div>
+          <div className="cancel-button">
+            <Button variant="contained" onClick={this.handleCancelClick}>
+              Cancel
+            </Button>
+          </div>
+          <div className="save-button">
+            <Button variant="contained" onClick={this.handleSaveClick}>
+              Save
+            </Button>
+          </div>
+          <div className="title-input">
             <TextField
+              id="outlined-basic"
+              label="Movie Title"
+              variant="outlined"
               onChange={this.onInputChange('titleInput')}
               className="movie-title-input"
-              placeholder="Movie Title"
             ></TextField>
           </div>
-          <div>
+          <div className="description-input">
             <TextField
-              id="filled-basic"
+              id="outlined-basic"
+              variant="outlined"
               label="Movie Description"
               onChange={this.onInputChange('descriptionInput')}
               className="movie-description-input"
             ></TextField>
           </div>
         </div>
-
-        <h3>Genre:</h3>
-        <ul>{genresListArray}</ul>
+        <div className="movie-container">
+          <Card>
+            <CardContent>
+              <Typography gutterBottom variant="h5" component="h3">
+                Genre:
+              </Typography>
+              <Typography gutterBottom color="textSecondary" component="h4">
+                <ul>{genresListArray}</ul>
+              </Typography>
+            </CardContent>
+          </Card>
+        </div>
       </div>
     );
   }
