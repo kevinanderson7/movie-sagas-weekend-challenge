@@ -79,7 +79,7 @@ class EditPage extends Component {
           <div className="title-input">
             <TextField
               defaultValue={this.props.store.movieClickedReducer.title}
-              required="true"
+              required={true}
               id="outlined-basic"
               label="Movie Title"
               variant="outlined"
@@ -89,8 +89,11 @@ class EditPage extends Component {
           </div>
           <div className="description-input">
             <TextField
+              rowsMax="6"
+              fullWidth={true}
+              multiline={true}
               defaultValue={this.props.store.movieClickedReducer.description}
-              required="true"
+              required={true}
               id="outlined-basic"
               variant="outlined"
               label="Movie Description"

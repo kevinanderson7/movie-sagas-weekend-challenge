@@ -13,6 +13,7 @@
 .description-input {
   margin: 15px;
   display: inline-block;
+  max-width: 100%;
 }
 
 .movie-container {
