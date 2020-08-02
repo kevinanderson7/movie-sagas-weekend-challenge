@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 
+import './MovieDetails.css';
+
 class MovieDetails extends Component {
   //   componentDidMount() {
   //     this.props.dispatch({
@@ -25,16 +27,18 @@ class MovieDetails extends Component {
 
     return (
       <div>
-        <div>
+        <div className="back-button">
           <Link to={'/'}>Back to List</Link>
         </div>
-        <div>
+        <div className="edit-button">
           <button onClick={this.handleEditClick}>Edit</button>
         </div>
-        <h2>{this.props.store.movieClickedReducer.title}</h2>
-        <p>{this.props.store.movieClickedReducer.description}</p>
-        <h3>Genre:</h3>
-        <ul>{genresListArray}</ul>
+        <div className="movie-container">
+          <h2>{this.props.store.movieClickedReducer.title}</h2>
+          <p>{this.props.store.movieClickedReducer.description}</p>
+          <h3>Genre:</h3>
+          <ul>{genresListArray}</ul>
+        </div>
       </div>
     );
   }

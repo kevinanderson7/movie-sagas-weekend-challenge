@@ -1,6 +1,13 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
+import Card from '@material-ui/core/Card';
+import CardActionArea from '@material-ui/core/CardActionArea';
+
+import CardContent from '@material-ui/core/CardContent';
+
+import Typography from '@material-ui/core/Typography';
+import './MovieItem.css';
 
 class MovieItem extends Component {
   handleImageClick = (movieId) => (event) => {
@@ -18,13 +25,28 @@ class MovieItem extends Component {
 
   render() {
     return (
-      <div
-        onClick={this.handleImageClick(this.props.item.id)}
-        key={this.props.item.id}
-      >
-        <img alt={this.props.item.title} src={this.props.item.poster} />
-        <h2>{this.props.item.title}</h2>
-        <p>{this.props.item.description}</p>
+      <div>
+        <img
+          onClick={this.handleImageClick(this.props.item.id)}
+          src={this.props.item.poster}
+          alt={this.props.item.title}
+        ></img>
+
+        <Card
+          onClick={this.handleImageClick(this.props.item.id)}
+          key={this.props.item.id}
+        >
+          <CardActionArea>
+            <CardContent>
+              <Typography gutterBottom variant="h5" component="h2">
+                {this.props.item.title}
+              </Typography>
+              <Typography variant="body2" color="textSecondary" component="p">
+                {this.props.item.description}
+              </Typography>
+            </CardContent>
+          </CardActionArea>
+        </Card>
       </div>
     );
   }

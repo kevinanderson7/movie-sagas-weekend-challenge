@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
+import TextField from '@material-ui/core/TextField';
 
 class EditPage extends Component {
   state = {
@@ -59,18 +60,19 @@ class EditPage extends Component {
           <button onClick={this.handleCancelClick}>Cancel</button>
           <button onClick={this.handleSaveClick}>Save</button>
           <div>
-            <input
+            <TextField
               onChange={this.onInputChange('titleInput')}
               className="movie-title-input"
               placeholder="Movie Title"
-            ></input>
+            ></TextField>
           </div>
           <div>
-            <input
+            <TextField
+              id="filled-basic"
+              label="Movie Description"
               onChange={this.onInputChange('descriptionInput')}
               className="movie-description-input"
-              placeholder="Movie Description"
-            ></input>
+            ></TextField>
           </div>
         </div>
 

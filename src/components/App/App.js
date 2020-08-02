@@ -5,6 +5,7 @@ import MovieList from '../MovieList/MovieList';
 import { connect } from 'react-redux';
 import MovieDetails from '../MovieDetails/MovieDetails';
 import EditPage from '../EditPage/EditPage';
+import Typography from '@material-ui/core/Typography';
 
 class App extends Component {
   componentDidMount() {
@@ -17,7 +18,9 @@ class App extends Component {
     return (
       <Router>
         <div className="App">
-          <h1>Movie Saga App</h1>
+          <Typography gutterBottom variant="h4" component="h1">
+            Movie Saga App
+          </Typography>
           <Route exact path="/" component={MovieList} />
         </div>
         <Route exact path="/details/:id" component={MovieDetails} />
