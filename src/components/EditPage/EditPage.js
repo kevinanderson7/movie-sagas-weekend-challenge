@@ -10,8 +10,8 @@ import Button from '@material-ui/core/Button';
 
 class EditPage extends Component {
   state = {
-    titleInput: '',
-    descriptionInput: '',
+    titleInput: this.props.store.movieClickedReducer.title,
+    descriptionInput: this.props.store.movieClickedReducer.description,
     id: '',
   };
 
@@ -40,12 +40,19 @@ class EditPage extends Component {
       ...this.state,
       id: this.props.store.movieClickedReducer.id,
     });
+    // if (this.state.titleInput || this.state.descriptionInput === '') {
+    //   alert(
+    //     'Please input new title and description or press cancel to return to previous page'
+    //   );
+
+    // } else {
     console.log(this.state);
     this.props.dispatch({
       type: 'UPDATE_MOVIE',
       payload: this.state,
     });
     this.props.history.push('/');
+    // }
   };
 
   render() {
@@ -71,6 +78,8 @@ class EditPage extends Component {
           </div>
           <div className="title-input">
             <TextField
+              defaultValue={this.props.store.movieClickedReducer.title}
+              required="true"
               id="outlined-basic"
               label="Movie Title"
               variant="outlined"
@@ -80,6 +89,8 @@ class EditPage extends Component {
           </div>
           <div className="description-input">
             <TextField
+              defaultValue={this.props.store.movieClickedReducer.description}
+              required="true"
               id="outlined-basic"
               variant="outlined"
               label="Movie Description"

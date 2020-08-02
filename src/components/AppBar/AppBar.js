@@ -8,7 +8,7 @@ class ButtonAppBar extends Component {
   render() {
     return (
       <div>
-        <AppBar color="white" position="static">
+        <AppBar color="default" position="static">
           <Toolbar>
             <Typography variant="h4">Movie Saga Application</Typography>
           </Toolbar>
