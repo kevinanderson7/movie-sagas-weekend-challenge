@@ -28,7 +28,7 @@ class MovieItem extends Component {
     return (
       <div>
         <Grid container justify="center">
-          <Grid item xs={12}>
+          <Grid item xs={10}>
             <img
               onClick={this.handleImageClick(this.props.item.id)}
               src={this.props.item.poster}
