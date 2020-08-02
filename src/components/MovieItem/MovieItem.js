@@ -8,6 +8,10 @@ class MovieItem extends Component {
       type: 'UPDATE_MOVIE_CLICKED',
       payload: this.props.item,
     });
+    // const movieClicked = this.props.store.movies.find(function (movieClicked) {
+    //   return movieClicked.id === movieId;
+    // });
+    // console.log(movieClicked);
     console.log(this.props);
     this.props.history.push(`/details/${movieId}`);
   };

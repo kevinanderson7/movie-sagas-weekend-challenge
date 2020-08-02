@@ -15,6 +15,7 @@ import axios from 'axios';
 // Create the rootSaga generator function
 function* rootSaga() {
   yield takeEvery('GET_MOVIES', getMovies);
+  yield takeEvery('UPDATE_MOVIE', updateMovie);
 }
 
 function* getMovies() {
@@ -31,6 +32,18 @@ function* getMovies() {
     });
   } catch (error) {
     console.log('Error in getMovies', error);
+  }
+}
+
+function* updateMovie(action) {
+  console.log(action.payload.id);
+  try {
+    yield axios.put(`/api/movies/${action.payload.id}`, action.payload);
+    yield put({
+      type: 'GET_MOVIES',
+    });
+  } catch (error) {
+    console.log('error in updateMovie', error);
   }
 }
 

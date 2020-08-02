@@ -32,4 +32,36 @@ router.get('/genres', (req, res) => {
     });
 });
 
+router.put('/:id', (req, res) => {
+  const id = req.params.id;
+  const updatedMovie = req.body;
+  console.log(updatedMovie);
+  console.log(id);
+
+  const queryText = `UPDATE movies
+    SET "title" = $1, 
+    "description" = $2
+    WHERE id=$3;`;
+
+  //   const queryValues = [
+  //     updatedMovie.titleInput,
+  //     updatedMovie.descriptionInput,
+  //     id,
+  //   ];
+
+  pool
+    .query(queryText, [
+      updatedMovie.titleInput,
+      updatedMovie.descriptionInput,
+      id,
+    ])
+    .then(() => {
+      res.sendStatus(200);
+    })
+    .catch((err) => {
+      console.log('Error completing PUT query', err);
+      res.sendStatus(500);
+    });
+});
+
 module.exports = router;

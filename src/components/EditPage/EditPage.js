@@ -3,6 +3,20 @@ import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 
 class EditPage extends Component {
+  state = {
+    titleInput: '',
+    descriptionInput: '',
+    id: '',
+  };
+
+  onInputChange = (input) => (event) => {
+    this.setState({
+      [input]: event.target.value,
+      id: this.props.store.movieClickedReducer.id,
+    });
+    console.log(this.state);
+  };
+
   handleEditClick = () => {
     this.props.history.push(
       `/details/${this.props.store.movieClickedReducer.id}/edit`
@@ -16,7 +30,15 @@ class EditPage extends Component {
   };
 
   handleSaveClick = () => {
-    console.log('clicking save');
+    this.setState({
+      ...this.state,
+      id: this.props.store.movieClickedReducer.id,
+    });
+    console.log(this.state);
+    this.props.dispatch({
+      type: 'UPDATE_MOVIE',
+      payload: this.state,
+    });
   };
 
   render() {
@@ -35,9 +57,22 @@ class EditPage extends Component {
         <div>
           <button onClick={this.handleCancelClick}>Cancel</button>
           <button onClick={this.handleSaveClick}>Save</button>
+          <div>
+            <input
+              onChange={this.onInputChange('titleInput')}
+              className="movie-title-input"
+              placeholder="Movie Title"
+            ></input>
+          </div>
+          <div>
+            <input
+              onChange={this.onInputChange('descriptionInput')}
+              className="movie-description-input"
+              placeholder="Movie Description"
+            ></input>
+          </div>
         </div>
-        <h2>{this.props.store.movieClickedReducer.title}</h2>
-        <p>{this.props.store.movieClickedReducer.description}</p>
+
         <h3>Genre:</h3>
         <ul>{genresListArray}</ul>
       </div>
