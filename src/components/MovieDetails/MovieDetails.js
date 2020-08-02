@@ -3,6 +3,11 @@ import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 
 class MovieDetails extends Component {
+  //   componentDidMount() {
+  //     this.props.dispatch({
+  //       type: 'GET_MOVIES',
+  //     });
+  //   }
   handleEditClick = () => {
     this.props.history.push(
       `/details/${this.props.store.movieClickedReducer.id}/edit`

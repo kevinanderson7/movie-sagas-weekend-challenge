@@ -39,6 +39,7 @@ class EditPage extends Component {
       type: 'UPDATE_MOVIE',
       payload: this.state,
     });
+    this.props.history.push('/');
   };
 
   render() {
