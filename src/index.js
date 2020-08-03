@@ -21,7 +21,6 @@ function* rootSaga() {
 function* getMovies() {
   try {
     const response = yield axios.get('/api/movies/genres');
-    console.log(response.data);
     yield put({
       type: 'SET_MOVIES',
       payload: response.data,
@@ -36,7 +35,6 @@ function* getMovies() {
 }
 
 function* updateMovie(action) {
-  console.log(action.payload.id);
   try {
     yield axios.put(`/api/movies/${action.payload.id}`, action.payload);
     yield put({

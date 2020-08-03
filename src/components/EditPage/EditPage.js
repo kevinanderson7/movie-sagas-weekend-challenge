@@ -20,7 +20,6 @@ class EditPage extends Component {
       [input]: event.target.value,
       id: this.props.store.movieClickedReducer.id,
     });
-    console.log(this.state);
   };
 
   handleEditClick = () => {
@@ -46,7 +45,6 @@ class EditPage extends Component {
     //   );
 
     // } else {
-    console.log(this.state);
     this.props.dispatch({
       type: 'UPDATE_MOVIE',
       payload: this.state,
@@ -56,7 +54,6 @@ class EditPage extends Component {
   };
 
   render() {
-    console.log(this.props.store.movies);
     const genresListArray = this.props.store.movieClickedReducer.genre.map(
       (item, index) => {
         return <li key={index}>{item}</li>;

@@ -20,7 +20,6 @@ class MovieItem extends Component {
     //   return movieClicked.id === movieId;
     // });
     // console.log(movieClicked);
-    console.log(this.props);
     this.props.history.push(`/details/${movieId}`);
   };
 

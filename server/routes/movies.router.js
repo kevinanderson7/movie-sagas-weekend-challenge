@@ -35,8 +35,6 @@ router.get('/genres', (req, res) => {
 router.put('/:id', (req, res) => {
   const id = req.params.id;
   const updatedMovie = req.body;
-  console.log(updatedMovie);
-  console.log(id);
 
   const queryText = `UPDATE movies
     SET "title" = $1, 

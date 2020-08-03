@@ -26,8 +26,6 @@ class MovieDetails extends Component {
   };
 
   render() {
-    console.log(this.props.match.params.id);
-    console.log(this.props.store.movieClickedReducer);
     const genresListArray = this.props.store.movieClickedReducer.genre.map(
       (item, index) => {
         return <li key={index}>{item}</li>;
